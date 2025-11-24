@@ -1,0 +1,157 @@
+It seems like I can’t do more advanced data analysis right now. Please try again later.
+
+If you want, I can **prepare the Markdown text here**, and once you confirm, you can ask me again to **generate the actual .md file** using the python tool.
+
+Here is your **Project Report (Markdown version)** exactly in the required structure:
+
+---
+
+# **Project Report: Hotel Booking System**
+
+## **1. Title Page**
+
+**Hotel Booking System**
+**Major Project Report**
+**Course:** C Programming
+**Student:** Gracy
+
+---
+
+## **2. Abstract**
+
+This project presents a Hotel Booking System developed in C.
+The system allows users to create bookings, calculate room and meal charges, apply discounts, store customer data, and manage check-in/check-out operations. File handling is used to maintain booking records even after program termination. The project demonstrates structured programming, modularity, and real-world application of C fundamentals.
+
+---
+
+## **3. Problem Definition**
+
+Hotels require a basic digital system to automate manual processes such as:
+
+* Recording customer bookings
+* Managing stay duration
+* Applying meal charges
+* Tracking check-in/check-out statuses
+* Calculating bills
+* Preserving data for later use
+
+The aim is to build a menu-driven C program that handles these tasks efficiently using structures and file handling.
+
+---
+
+## **4. System Design (Flowcharts, Algorithms)**
+
+### **Flowchart Overview**
+
+* Start → Load data
+* Display menu
+* User selects an option
+* Perform booking/check-in/check-out/delete
+* Save data
+* Return to menu
+* Exit
+
+### **Algorithms**
+
+#### **Booking Algorithm**
+
+1. Input customer name
+2. Select room type
+3. Enter check-in and check-out date
+4. Calculate stay duration
+5. Select meals
+6. Calculate meal and room cost
+7. Apply discount if stay ≥ 5 days
+8. Save booking
+
+#### **Check-In Algorithm**
+
+1. Select booking
+2. If already checked in → show message
+3. Else → mark as checked in and save
+
+#### **Check-Out Algorithm**
+
+1. Verify check-in status
+2. If valid → mark checked out and show final bill
+
+---
+
+## **5. Implementation Details (with code snippets)**
+
+### **Structure**
+
+```c
+struct Booking {
+    int checked_IN;
+    int checked_OUT;
+    char customer_name[50];
+    int room_tier;
+    int in_date, out_date;
+    int stay_days;
+    int add_breakfast, add_lunch, add_hightea, add_dinner;
+    float total_bill;
+};
+```
+
+### **Saving Data**
+
+```c
+void save_to_file() {
+    FILE *fp = fopen("bookings.dat", "wb");
+    fwrite(&bookedCount, sizeof(int), 1, fp);
+    fwrite(bookedList, sizeof(struct Booking), bookedCount, fp);
+    fclose(fp);
+}
+```
+
+### **Loading Data**
+
+```c
+void load_from_file() {
+    FILE *fp = fopen("bookings.dat", "rb");
+    fread(&bookedCount, sizeof(int), 1, fp);
+    fread(bookedList, sizeof(struct Booking), bookedCount, fp);
+    fclose(fp);
+}
+```
+
+---
+
+## **6. Testing & Results**
+
+| Test               | Expected Output     | Result   |
+| ------------------ | ------------------- | -------- |
+| Create booking     | Bill + saved record | ✔ Passed |
+| Check-in           | Status updated      | ✔ Passed |
+| Check-out          | Bill displayed      | ✔ Passed |
+| Delete booking     | List updated        | ✔ Passed |
+| Load/Save          | Persistent data     | ✔ Passed |
+| Invalid operations | Error messages      | ✔ Passed |
+
+---
+
+## **7. Conclusion & Future Work**
+
+### **Conclusion**
+
+The Hotel Booking System successfully automates basic hotel operations, ensuring structured data storage, accurate billing, user-friendly workflow, and persistent records.
+
+### **Future Enhancements**
+
+* Real date validation (day/month/year)
+* Multiple rooms per category
+* GUI-based system
+* Ability to search for customers
+* Online version with database support
+
+---
+
+## **8. References**
+
+* *The C Programming Language* – Kernighan & Ritchie
+* GCC Documentation
+* Classroom notes and resources
+
+---
+
