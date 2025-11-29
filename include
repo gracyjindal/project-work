@@ -1,0 +1,45 @@
+#ifndef HOTEL_H
+#define HOTEL_H
+
+#include <stdio.h>
+#include <string.h>
+
+#define max_bookings 10
+#define min_discount_days 5
+#define discount_rate 0.10 
+
+#define standard_room 1000
+#define deluxe_room 2000
+#define suite_room 3500
+
+#define price_breakfast 150
+#define price_lunch 300
+#define price_hightea 120
+#define price_dinner 350
+
+struct Booking
+{
+    int checked_IN;
+    int checked_OUT;
+    char customer_name[50];
+    int room_tier;
+    int in_date, out_date;
+    int stay_days;
+    int add_breakfast, add_lunch, add_hightea, add_dinner;
+    float total_bill;
+};
+
+extern struct Booking bookedList[max_bookings];
+extern int bookedCount;
+
+void save_to_file();
+void load_from_file();
+void show_room_tiers();
+int get_room_tier(int t);
+int calc_meal_price(int b, int l, int h, int d);
+void new_booking();
+void list_bookings();
+void handle_check();
+void delete_booking();
+
+#endif
